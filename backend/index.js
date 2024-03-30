@@ -1,11 +1,13 @@
 const express = require ('express')
-const reds = require('redis')
+const redis = require('redis')
 
 const app = express()
 
-const client = reds.createClient({
-    host: 'redis-server',
-    port: 6379
+const client = redis.createClient({
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    retry_strategy: () => 1000,
+
 })
 client.set('visits', 0)
 
@@ -17,5 +19,5 @@ app.get('/', (req,res) =>{
 })
 
 app.listen(8081, () => {
-    console.log("Server is running at port 8080")
+    console.log("Server is running at port 8081")
 })

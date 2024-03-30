@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import ServerApi from './ServerApi';
+import test from './test';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hi there! Its magic.... it should work, hate it
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <Link to="/">Home</Link>
+          <Link to="/other">Test</Link>
+        </header>
+        <div>
+          <Route exact path = '/' component={ServerApi}></Route>
+          <Route path = '/other' component={test}></Route> 
+        </div>
+      </div>
+    </Router>
   );
 }
 
