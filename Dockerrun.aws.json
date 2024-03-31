@@ -1,0 +1,40 @@
+{
+    "AWSEBDockerrunVersion" : 2,
+    "containerDefinitions":[
+        {
+            "name": "frontend",
+            "image": "ddhairya/ms-frontend",
+            "hostname": "frontend",
+            "essential" : false,
+            "memory": 128
+        },
+        {
+            "name": "backend",
+            "image": "ddhairya/ms-backend",
+            "hostname": "backend",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "redis",
+            "image": "redis",
+            "hostname": "redis",
+            "essential": true,
+            "memory": 128
+        },
+        {
+            "name": "ngnix",
+            "image": "ddhairya/ms-ngnix",
+            "hostname": "ngnix",
+            "essential": true,
+            "portMappings":[
+                {
+                    "hostport": 3000,
+                    "containerport": 80
+                }
+            ],
+            "links": ["frontend", "backend"],
+            "memory": 128
+        }
+    ]
+}
