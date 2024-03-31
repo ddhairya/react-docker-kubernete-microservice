@@ -25,13 +25,13 @@ script:
 
 after-success:
   - docker build -t ddhairya/microservice-frontend ./frontend
-  - docker build -t ddhairya/microservice-ngnix ./ngnix
+  - docker build -t ddhairya/microservice-nginx ./nginx
   - docker build -t ddhairya.microservice-backend ./backend
   #LOGIN to Docker Hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push the docker images to Docker Hub
   - docker push ddhairya/microservice-frontend
-  - docker push ddhairya/microservice-ngnix
+  - docker push ddhairya/microservice-nginx
   - docker push ddhairya/microservice-backend
 
 branches:
