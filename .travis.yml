@@ -37,3 +37,17 @@ after-success:
 branches:
   only:
     -dhairya-dev
+
+depoly:
+  provider: elasticbeanstalk
+  region: 'eu-northt-1'
+  app: aws-application-name
+  env: aws-application-env
+  bucket_name: elastic-s3-bucket-name
+  bucket_path: give-bucket-name
+  on:
+    branch: dhairya-dev
+  access_key_id: $AWS_ACCESS_KEY_VAR_NAME_TRAVISCI
+  secret_access_key:
+    secure: $AWS_SECRET_KEY_VAR_NAME_TRAVISCI
+
