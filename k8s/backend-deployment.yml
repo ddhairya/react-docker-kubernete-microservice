@@ -1,0 +1,24 @@
+apiVersion: app/V1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: backend
+  template:
+    metadata:
+      labels:
+        component: backend
+      spec:
+        containers:
+          - name: backend
+            image: ddhairya/backend
+            ports:
+              - containerPort: 8081
+            env:
+              - name: REDIS_HOST
+                value: redis-cluster-ip-service
+              - name: REDIS_PORT
+                value: '6379'
