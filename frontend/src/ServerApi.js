@@ -23,6 +23,7 @@ class ServerApi extends Component{
         return(
             <div>
                 {this.renderNoOfVists()}
+                <p>Hello World</p>
             </div>
         )
     }
