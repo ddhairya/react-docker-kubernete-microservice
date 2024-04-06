@@ -4,15 +4,12 @@ services:
       restart: always
       image: 'redis:latest'
   nginx:
-    depends_on:
-      - backend
-      - frontend
     restart: always
     build:
       context: ./nginx
       dockerfile: Dockerfile.dev
     ports:
-      - '3000:80'
+      - '3001:80'
   backend:
     depends_on:
       - redis

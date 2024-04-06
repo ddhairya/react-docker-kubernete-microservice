@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default() => {
+let delta = () => {
     return(
         <div>
             I am a test page
@@ -9,3 +9,5 @@ export default() => {
         </div>
     )
 }
+
+export default delta
